@@ -1,5 +1,5 @@
 {
-  "name": "Webpack-boiler-plate",
+  "name": "Assignment",
   "version": "1.0.0",
   "description": "",
   "main": "src/app.js",
@@ -14,9 +14,7 @@
   "dependencies": {
     "ejs": "^2.5.7",
     "jquery": "^3.2.1",
-    "webpack": "^3.10.0",
-    "materialize-css": "^0.100.2",
-    "materialize-loader": "^2.0.2"
+    "webpack": "^3.10.0"
   },
   "devDependencies": {
     "css-loader": "^0.28.7",

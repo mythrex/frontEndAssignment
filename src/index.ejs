@@ -9,154 +9,233 @@
 </head>
 
 <body>
-	<!--Import jQuery before materialize.js-->
-	<header>
-		<ul id="slide-out" class="sidenav sidenav-fixed">
-			<li class="logo">
-				<a href="" class="brand-logo">Logo</a>
-			</li>
-      <li>
-      	<!-- template for chapters -->
-      	<ul class="collapsible grade" data-collapsible="accordion" id="grades-list-accordian">
+	<section id="section-1">
+		<div class="container-fluid fw fh">
+			<div class="row fw fh">
+				<div class="col l3 m4 s6">
+					<div class="card">
+						<div class="row">
+							<div class="col s12">
+								<ul class="tabs">
+									<li class="tab col s6"><a href="#sign_up">Sign Up</a></li>
+					        <li class="tab col s6"><a class="active" href="#login">Login</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						
+						<div class="card-content" >
 
-      		<script id="grades-list-template" type="text/template">
-	      		<% for(var i = 0;i< gradesList.length; i++){ %>
-		      		<li class="grade" data-grade-id="<%= i %>">
-		      			<div class="collapsible-header">
-		      				<span><i class="material-icons">filter_drama</i> 
-		      					<%= gradesList[i].name %>
-		      				</span>
-		      			</div>
-		      			<div class="collapsible-body">
-									<ul class="collapsible subjects" data-collapsible="accordion">
-										<% for(var j=0; j< gradesList[i].subjectList.length; j++){ %>
-											<li class="subject" data-subject-id="<%= j %>">
-												<div class="collapsible-header">
-													<i class="material-icons">book</i>
-													<%= gradesList[i].subjectList[j].name %>
-												</div>
-												<div class="collapsible-body">
-													<ul class="chapters">
-														<% for(var k=0; k< gradesList[i].subjectList[j].chapterList.length; k++){ %>
-															<li class="chapter" data-chapter-id="<%= k %>">
-																<a href="#">
-																	<i class="material-icons">chevron_right</i> 
-																	<%= gradesList[i].subjectList[j].chapterList[k].name %>
-																</a>
-															</li>
-														<% } %>
-									      		<li class="chapters" style="background: white;">
-									      			<div class="row mb-none">
-									      				<div class="input-field col s9">
-												          <input id="input-chapter-<%= i %>-<%= j %>" type="text">
-												          <label for="input-chapter-<%= i %>-<%= j %>">Add new chapter</label>
-												        </div>
-												        <div class="col s3">
-												        	<button class="btn-floating waves-effect waves-light btn-chapter" style="margin-top: 1rem;margin-bottom: 1rem;" id="input-chapter-<%= i %>-<%= j %>" >
-												        		<i class="material-icons">add</i>
-												        	</button>
-												        </div>
-									      			</div>
-									      		</li>
-													</ul>
-												</div>
-											</li>
-										<% } %>
-					      		<li class="subject">
-					      			<div class="row mb-none">
-					      				<div class="input-field col s9">
-								          <input id="input-subject-<%= i%>" type="text">
-								          <label for="input-subject-<%= i%>">Add new subject</label>
-								        </div>
-								        <div class="col s3">
-								        	<button class="btn-floating waves-effect waves-light btn-subject" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-subject-<%= i%>">
-								        		<i class="material-icons">add</i>
-								        	</button>
-								        </div>
-					      			</div>
-					      		</li>
-									</ul>
-		      			</div>
-		      		</li>
-	      		<%}%>
-	      		<li class="grade">
-	      			<div class="row mb-none">
-	      				<div class="input-field col s9">
-				          <input id="input-grade" type="text">
-				          <label for="input-grade">Add new grade</label>
+							<div class="row" id="sign_up">
+								<div class="input-field col s12">
+				          <input id="user_name" type="text" class="validate">
+				          <label for="user_name">User Name</label>
 				        </div>
-				        <div class="col s3">
-				        	<button class="btn-floating waves-effect waves-light" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-grade">
-				        		<i class="material-icons">add</i>
-				        	</button>
+				        <div class="input-field col s12">
+				          <input id="password" type="password" class="validate">
+				          <label for="password">Password</label>
 				        </div>
-	      			</div>
-	      		</li>
-      		</script>
-					<!-- script tag ends -->
-      	</ul>
-      </li>
-            
-    </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i class="material-icons">menu</i></a>
-	</header>
-	
-	<main>
-		<div id="page-header-container"></div>
-		<script id="page-header-template" type="text/template">
-				<% if (curChap != undefined){ %>
-					<div class="page-header">
-						<p>
-							<span><%= gradesList[curGrade].name %> </span>
-							<i class="material-icons">chevron_right</i>
-							<span><%= gradesList[curGrade].subjectList[curSub].name %></span>
-							<i class="material-icons">chevron_right</i>
-							<span><%= gradesList[curGrade].subjectList[curSub].chapterList[curChap].name %></span>
-						</p>
+			        	<button class="btn green btn-large col s12">
+			        		Sign Up
+			        	</button>
+							</div>
+
+							<div class="row" id="login">
+								<div class="input-field col s12">
+				          <input id="user_name" type="text" class="validate">
+				          <label for="user_name">User Name</label>
+				        </div>
+				        <div class="input-field col s12">
+				          <input id="password" type="password" class="validate">
+				          <label for="password">Password</label>
+				        </div>
+			        	<button class="btn btn-large col s12">
+			        		Login
+			        	</button>
+							</div>
+
+						</div>
+						
+
 					</div>
-				<% } else{%>
-					<h4 class="text-muted" id="placeholder-text">Select a Chapter to display some questions :)</h4>
-				<% } %>
-		</script>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="section-2" style="display: none;">
+			<header>
+				<ul id="slide-out" class="sidenav sidenav-fixed">
+					<li class="logo">
+						<a href="" class="brand-logo">Logo</a>
+					</li>
+		      <li>
+		      	<!-- template for chapters -->
+		      	<ul class="collapsible grade" data-collapsible="accordion" id="grades-list-accordian">
 
-		<div class="container">
+		      		<script id="grades-list-template" type="text/template">
+			      		<% for(var i = 0;i< gradesList.length; i++){ %>
+				      		<li class="grade" data-grade-id="<%= i %>">
+				      			<div class="collapsible-header">
+				      				<span><i class="material-icons">filter_drama</i> 
+				      					<%= gradesList[i].name %>
+				      				</span>
+				      			</div>
+				      			<div class="collapsible-body">
+											<ul class="collapsible subjects" data-collapsible="accordion">
+												<% for(var j=0; j< gradesList[i].subjectList.length; j++){ %>
+													<li class="subject" data-subject-id="<%= j %>">
+														<div class="collapsible-header">
+															<i class="material-icons">book</i>
+															<%= gradesList[i].subjectList[j].name %>
+														</div>
+														<div class="collapsible-body">
+															<ul class="chapters">
+																<% for(var k=0; k< gradesList[i].subjectList[j].chapterList.length; k++){ %>
+																	<li class="chapter" data-chapter-id="<%= k %>">
+																		<a href="#">
+																			<i class="material-icons">chevron_right</i> 
+																			<%= gradesList[i].subjectList[j].chapterList[k].name %>
+																		</a>
+																	</li>
+																<% } %>
+											      		<li class="chapters" style="background: white;">
+											      			<div class="row mb-none">
+											      				<div class="input-field col s9">
+														          <input id="input-chapter-<%= i %>-<%= j %>" type="text">
+														          <label for="input-chapter-<%= i %>-<%= j %>">Add new chapter</label>
+														        </div>
+														        <div class="col s3">
+														        	<button class="btn-floating waves-effect waves-light btn-chapter" style="margin-top: 1rem;margin-bottom: 1rem;" id="input-chapter-<%= i %>-<%= j %>" >
+														        		<i class="material-icons">add</i>
+														        	</button>
+														        </div>
+											      			</div>
+											      		</li>
+															</ul>
+														</div>
+													</li>
+												<% } %>
+							      		<li class="subject">
+							      			<div class="row mb-none">
+							      				<div class="input-field col s9">
+										          <input id="input-subject-<%= i%>" type="text">
+										          <label for="input-subject-<%= i%>">Add new subject</label>
+										        </div>
+										        <div class="col s3">
+										        	<button class="btn-floating waves-effect waves-light btn-subject" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-subject-<%= i%>">
+										        		<i class="material-icons">add</i>
+										        	</button>
+										        </div>
+							      			</div>
+							      		</li>
+											</ul>
+				      			</div>
+				      		</li>
+			      		<%}%>
+			      		<li class="grade">
+			      			<div class="row mb-none">
+			      				<div class="input-field col s9">
+						          <input id="input-grade" type="text">
+						          <label for="input-grade">Add new grade</label>
+						        </div>
+						        <div class="col s3">
+						        	<button class="btn-floating waves-effect waves-light" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-grade">
+						        		<i class="material-icons">add</i>
+						        	</button>
+						        </div>
+			      			</div>
+			      		</li>
+		      		</script>
+							<!-- script tag ends -->
+		      	</ul>
+		      </li>
+		            
+		    </ul>
+		    <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i class="material-icons">menu</i></a>
+			</header>
 			
-			<div class="row" id="questions-container">
+			<main>
+				<div id="page-header-container"></div>
+				<script id="page-header-template" type="text/template">
+						<% if (curChap != undefined){ %>
+							<div class="page-header">
+								<p>
+									<span><%= gradesList[curGrade].name %> </span>
+									<i class="material-icons">chevron_right</i>
+									<span><%= gradesList[curGrade].subjectList[curSub].name %></span>
+									<i class="material-icons">chevron_right</i>
+									<span><%= gradesList[curGrade].subjectList[curSub].chapterList[curChap].name %></span>
+								</p>
+							</div>
+						<% } else{%>
+							<h4 class="text-muted" id="placeholder-text">Select a Chapter to display some questions :)</h4>
+						<% } %>
+				</script>
+
+				<div class="container">
 					
-					<script id="question-card-template" type="text/template">
-						<% for(var i = 0;i< gradesList.length; i++){ %>
-							<% for(var j=0; j< gradesList[i].subjectList.length; j++){ %>
-								<% for(var k=0; k< gradesList[i].subjectList[j].chapterList.length; k++){ %>
-									<% for(var l=0; l< gradesList[i].subjectList[j].chapterList[k].questionList.length; l++){ %>
-										<div class="col s12 <%=i%>-<%=j%>-<%=k%>" style="display: none;">
-											<div class="card question-card" data-question-id="<%=l%>">
-											  <div class="card-content">
-											    <p class="question">
-											    	<%= gradesList[i].subjectList[j].chapterList[k].questionList[l].question %>
-											    </p>
-											    <p class="answer">
-											    <%= gradesList[i].subjectList[j].chapterList[k].questionList[l].answer %>
-											  </div>
-											</div>
-										</div>
+					<div class="row" id="questions-container">
+							
+							<script id="question-card-template" type="text/template">
+								<% for(var i = 0;i< gradesList.length; i++){ %>
+									<% for(var j=0; j< gradesList[i].subjectList.length; j++){ %>
+										<% for(var k=0; k< gradesList[i].subjectList[j].chapterList.length; k++){ %>
+											<% for(var l=0; l< gradesList[i].subjectList[j].chapterList[k].questionList.length; l++){ %>
+												<div class="col s12 <%=i%>-<%=j%>-<%=k%>" style="display: none;">
+													<div class="card question-card" data-question-id="<%=l%>">
+													  <div class="card-content">
+													    <p class="question">
+													    	<%= gradesList[i].subjectList[j].chapterList[k].questionList[l].question %>
+													    </p>
+													    <p class="answer">
+													    <%= gradesList[i].subjectList[j].chapterList[k].questionList[l].answer %>
+													  </div>
+													</div>
+												</div>
+											<% } %>
+										<% } %>
 									<% } %>
 								<% } %>
-							<% } %>
-						<% } %>
-					</script>
+							</script>
 
-			</div>
-			          
-		</div>
-		<!-- card -->
+					</div>
+					          
+				</div>
+				<!-- card -->
 
-		<div class="fixed-action-btn">
-		  <a class="btn-floating btn-large orange tooltipped" data-position="left" data-tooltip="Add Ques /Chap /Sub /Grade">
-		    <i class="large material-icons">add</i>
-		  </a>
-		</div>
-		      
-	</main>
+				<div class="fixed-action-btn tooltipped" id="btn-question" style="display: none;" data-position="top" data-tooltip="Add Question">
+				  <a class="btn-floating btn-large red modal-trigger" href="#modal-question">
+				    <i class="large material-icons">add</i>
+				  </a>
+				</div>
+
+				<!-- Modal Structure -->
+			  <div id="modal-question" class="modal">
+			    <div class="modal-content">
+			      <div class="container">
+			      	<h4>Add a question and answer</h4>
+			      	<div class="row">
+			      		<div class="input-field col s12">
+				          <input id="input-question" type="text">
+				          <label for="input-question">Question</label>
+				        </div>
+				        <div class="input-field col s12">
+				          <input id="input-answer" type="text">
+				          <label for="input-answer">Answer</label>
+				        </div>
+			      	</div>
+			      </div>
+			    </div>
+			    <div class="modal-footer">
+			      <button class="btn green" id="btn-add-question-answer">
+			      	<i class="material-icons">add</i>
+			      	Add
+			      </button>
+			    </div>
+			  </div>
+				      
+			</main>
+	</section>
 	<footer></footer>
 	<script
 			  src="https://code.jquery.com/jquery-3.3.1.js"

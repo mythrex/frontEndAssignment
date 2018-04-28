@@ -27,7 +27,7 @@ $(function(){
   var instance = M.Sidenav.init(elem);
   
   $('.tooltipped').tooltip();
-
+  $('.tabs').tabs();
   refreshDoc();
   //main functions start here
   
@@ -48,6 +48,11 @@ function inits() {
 
 		  //click event for adding chapter
 		  $('.btn-chapter').click(addChapter);
+
+	   $('.modal').modal();
+
+	   //for addding question
+	   $('#btn-add-question-answer').click(addQuestion)
 }
 
 function refreshDoc() {
@@ -102,6 +107,7 @@ function toggleChapter(event) {
 	//display page Header
 	var pageHeaderHtml = ejs.render(pageHeaderTemplate, {"curGrade": curGrade,"curSub": curSub,"curChap": curChap,"gradesList": gradesListObj.gradesList});
 	$('#page-header-container').html(pageHeaderHtml);
+	$('#btn-question').show();
 }
 
 function addGrade(e) {
@@ -129,6 +135,14 @@ function addChapter(e) {
 	var $inputChapter = $('#input-chapter-'+gradeId+'-'+subId);
 	var value = $inputChapter.val();
 	gradesListObj.gradesList[gradeId].subjectList[subId].chapterList.push({name: value,questionList: []});
+	saveData(gradesListObj);
+	refreshDoc();
+}
+
+function addQuestion(e) {
+	var inputQuestion = $('#input-question').val();
+	var inputAnswer = $('#input-answer').val();
+	gradesListObj.gradesList[curGrade].subjectList[curSub].chapterList[curChap].questionList.push({question: inputQuestion,answer: inputAnswer});
 	saveData(gradesListObj);
 	refreshDoc();
 }

@@ -8,17 +8,20 @@
 			font-size: 3rem
 			font-weight: bold
 
-	.collapsible.grade>li
+	.collapsible.subjects>li
 		border-bottom: 1px solid $divider-color
 	.grade
 		.subjects
 			li
-				.collapsible-header
+				.collapsible-header,.row
 					padding: 0 32px
 			.chapters
 				li
-					a
+					a,.row
 						padding: 0 48px
 				li.active
 					i
 						color: $primary-color-text
+					.row
+						i
+							color: $primary-color

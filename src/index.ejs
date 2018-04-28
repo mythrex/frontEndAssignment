@@ -45,14 +45,53 @@
 																</a>
 															</li>
 														<% } %>
+									      		<li class="chapters" style="background: white;">
+									      			<div class="row mb-none">
+									      				<div class="input-field col s9">
+												          <input id="input-chapter" type="text">
+												          <label for="input-chapter">Add new chapter</label>
+												        </div>
+												        <div class="col s3">
+												        	<button class="btn-floating waves-effect waves-ligh" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-chapter">
+												        		<i class="material-icons">add</i>
+												        	</button>
+												        </div>
+									      			</div>
+									      		</li>
 													</ul>
 												</div>
 											</li>
 										<% } %>
+					      		<li class="subject">
+					      			<div class="row mb-none">
+					      				<div class="input-field col s9">
+								          <input id="input-subject" type="text">
+								          <label for="input-subject">Add new subject</label>
+								        </div>
+								        <div class="col s3">
+								        	<button class="btn-floating waves-effect waves-ligh" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-subject">
+								        		<i class="material-icons">add</i>
+								        	</button>
+								        </div>
+					      			</div>
+					      		</li>
 									</ul>
 		      			</div>
 		      		</li>
 	      		<%}%>
+	      		<li class="grade">
+	      			<div class="row mb-none">
+	      				<div class="input-field col s9">
+				          <input id="input-grade" type="text">
+				          <label for="input-grade">Add new grade</label>
+				        </div>
+				        <div class="col s3">
+				        	<button class="btn-floating waves-effect waves-ligh" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-grade">
+				        		<i class="material-icons">add</i>
+				        	</button>
+				        </div>
+	      			</div>
+	      		</li>
       		</script>
 					<!-- script tag ends -->
       	</ul>
@@ -65,7 +104,7 @@
 	<main>
 		<div id="page-header-container"></div>
 		<script id="page-header-template" type="text/template">
-				<% if (curGrade != undefined){ %>
+				<% if (curChap != undefined){ %>
 					<div class="page-header">
 						<p>
 							<span><%= gradesList[curGrade].name %> </span>

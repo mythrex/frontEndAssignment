@@ -63,29 +63,49 @@
 	</header>
 	
 	<main>
-		<div class="page-header">
-			<h3>
-				<span>Class 11 </span>
-				<i class="material-icons">chevron_right</i>
-				<span>Subject</span>
-				<i class="material-icons">chevron_right</i>
-				<span>Chapter 1</span>
-			</h3>
-		</div>
+		<div id="page-header-container"></div>
+		<script id="page-header-template" type="text/template">
+				<% if (curGrade != undefined){ %>
+					<div class="page-header">
+						<p>
+							<span><%= gradesList[curGrade].name %> </span>
+							<i class="material-icons">chevron_right</i>
+							<span><%= gradesList[curGrade].subjectList[curSub].name %></span>
+							<i class="material-icons">chevron_right</i>
+							<span><%= gradesList[curGrade].subjectList[curSub].chapterList[curChap].name %></span>
+						</p>
+					</div>
+				<% } else{%>
+					<h4 class="text-muted" id="placeholder-text">Select a Chapter to display some questions :)</h4>
+				<% } %>
+		</script>
+
 		<div class="container">
 			
-			<div class="row">
-			  <div class="col s12">
+			<div class="row" id="questions-container">
+					
+					<script id="question-card-template" type="text/template">
+						<% for(var i = 0;i< gradesList.length; i++){ %>
+							<% for(var j=0; j< gradesList[i].subjectList.length; j++){ %>
+								<% for(var k=0; k< gradesList[i].subjectList[j].chapterList.length; k++){ %>
+									<% for(var l=0; l< gradesList[i].subjectList[j].chapterList[k].questionList.length; l++){ %>
+										<div class="col s12 <%=i%>-<%=j%>-<%=k%>" style="display: none;">
+											<div class="card question-card" data-question-id="<%=l%>">
+											  <div class="card-content">
+											    <p class="question">
+											    	<%= gradesList[i].subjectList[j].chapterList[k].questionList[l].question %>
+											    </p>
+											    <p class="answer">
+											    <%= gradesList[i].subjectList[j].chapterList[k].questionList[l].answer %>
+											  </div>
+											</div>
+										</div>
+									<% } %>
+								<% } %>
+							<% } %>
+						<% } %>
+					</script>
 
-			    <div class="card question-card">
-			      <div class="card-content">
-			        <p class="question">I am a very simple card. I am good at containing small bits of.</p>
-			        <p class="answer">
-			        I am convenient because I require little markup to use effectively.</p>
-			      </div>
-			    </div>
-
-			  </div>
 			</div>
 			          
 		</div>

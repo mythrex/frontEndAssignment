@@ -42,6 +42,12 @@ function inits() {
 
 		  //click event for add Grade
 		  $('#btn-grade').click(addGrade);
+
+		  //click event for adding subject
+		  $('.btn-subject').click(addSubject);
+
+		  //click event for adding chapter
+		  $('.btn-chapter').click(addChapter);
 }
 
 function refreshDoc() {
@@ -99,10 +105,30 @@ function toggleChapter(event) {
 }
 
 function addGrade(e) {
-	console.log('hello');
 	var $inputGrade = $('#input-grade')
 	var value = $inputGrade.val();
 	gradesListObj.gradesList.push({name: value,subjectList: []});
+	saveData(gradesListObj);
+	refreshDoc();
+}
+
+function addSubject(e) {
+	var id = +$(this).attr('id').split('-')[2];
+	var $inputSubject = $('#input-subject-'+id);
+	var value = $inputSubject.val();
+	gradesListObj.gradesList[id].subjectList.push({name: value,chapterList: []});
+	saveData(gradesListObj);
+	refreshDoc();
+}
+
+function addChapter(e) {
+	var tempArr = $(this).attr('id').split('-');
+	var gradeId = +tempArr[2];
+	var subId = +tempArr[3];
+	console.log(gradeId,subId);
+	var $inputChapter = $('#input-chapter-'+gradeId+'-'+subId);
+	var value = $inputChapter.val();
+	gradesListObj.gradesList[gradeId].subjectList[subId].chapterList.push({name: value,questionList: []});
 	saveData(gradesListObj);
 	refreshDoc();
 }

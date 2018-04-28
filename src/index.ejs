@@ -48,11 +48,11 @@
 									      		<li class="chapters" style="background: white;">
 									      			<div class="row mb-none">
 									      				<div class="input-field col s9">
-												          <input id="input-chapter" type="text">
-												          <label for="input-chapter">Add new chapter</label>
+												          <input id="input-chapter-<%= j %>" type="text">
+												          <label for="input-chapter-<%= j %>">Add new chapter</label>
 												        </div>
 												        <div class="col s3">
-												        	<button class="btn-floating waves-effect waves-ligh" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-chapter">
+												        	<button class="btn-floating waves-effect waves-light btn-chapter" style="margin-top: 1rem;margin-bottom: 1rem;" id="input-chapter-<%= j %>" >
 												        		<i class="material-icons">add</i>
 												        	</button>
 												        </div>
@@ -65,11 +65,11 @@
 					      		<li class="subject">
 					      			<div class="row mb-none">
 					      				<div class="input-field col s9">
-								          <input id="input-subject" type="text">
-								          <label for="input-subject">Add new subject</label>
+								          <input id="input-subject-<%= i%>" type="text">
+								          <label for="input-subject-<%= i%>">Add new subject</label>
 								        </div>
 								        <div class="col s3">
-								        	<button class="btn-floating waves-effect waves-ligh" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-subject">
+								        	<button class="btn-floating waves-effect waves-light btn-subject" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-subject-<%= i%>">
 								        		<i class="material-icons">add</i>
 								        	</button>
 								        </div>
@@ -86,7 +86,7 @@
 				          <label for="input-grade">Add new grade</label>
 				        </div>
 				        <div class="col s3">
-				        	<button class="btn-floating waves-effect waves-ligh" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-grade">
+				        	<button class="btn-floating waves-effect waves-light" style="margin-top: 1rem;margin-bottom: 1rem;" id="btn-grade">
 				        		<i class="material-icons">add</i>
 				        	</button>
 				        </div>

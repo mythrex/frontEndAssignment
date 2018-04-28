@@ -6,13 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
-    "prod": "npm run clean && NODE_ENV=production webpack -p",
+    "prod": "npm run NODE_ENV=production webpack -p",
     "clean": "rimraf ./dist/*"
   },
   "author": "mythrex",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^2.5.7",
+    "ejs": "^2.5.9",
     "jquery": "^3.2.1",
     "webpack": "^3.10.0"
   },

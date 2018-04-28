@@ -46,7 +46,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-      		template: 'ejs-simple-loader?title=Assignment&activePage=home!./src/index.ejs',
+      		template: './src/index.html',
       		filename: 'index.html',
       		minify: {
       			collapseWhitespace: true

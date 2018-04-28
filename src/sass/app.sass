@@ -1,4 +1,16 @@
 @import "modules/mixins"
 @import "modules/vars"
 @import './modules/palette'
+//modules
+@import "./modules/sidenav"
+@import "./modules/page-header"
+@import "./modules/question-card"
+header, main, footer
+  padding-left: 300px
 
+body
+	background: #f1f1f1
+
+@media only screen and (max-width : 992px) 
+  header, main, footer 
+    padding-left: 0

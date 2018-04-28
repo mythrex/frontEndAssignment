@@ -21,7 +21,7 @@
 
       		<script id="grades-list-template" type="text/template">
 	      		<% for(var i = 0;i< gradesList.length; i++){ %>
-		      		<li>
+		      		<li data-grade-id="<%= i %>">
 		      			<div class="collapsible-header">
 		      				<span><i class="material-icons">filter_drama</i> 
 		      					<%= gradesList[i].name %>
@@ -30,7 +30,7 @@
 		      			<div class="collapsible-body">
 									<ul class="collapsible subjects" data-collapsible="accordion">
 										<% for(var j=0; j< gradesList[i].subjectList.length; j++){ %>
-											<li>
+											<li data-subject-id="<%= j %>">
 												<div class="collapsible-header">
 													<i class="material-icons">book</i>
 													<%= gradesList[i].subjectList[j].name %>
@@ -38,7 +38,7 @@
 												<div class="collapsible-body">
 													<ul class="chapters">
 														<% for(var k=0; k< gradesList[i].subjectList[j].chapterList.length; k++){ %>
-															<li>
+															<li data-chapter-id="<%= k %>">
 																<a href="#">
 																	<i class="material-icons">chevron_right</i> 
 																	<%= gradesList[i].subjectList[j].chapterList[k].name %>

@@ -7,11 +7,12 @@ var gradesListObj;
 //jquery variables
 $gradeListAccordian = $('#grades-list-accordian');
 $gradesListTemplate = $('#grades-list-template');
-
 //templates here
 //templateFor Accordian
 var accordianTemplate = $gradesListTemplate.html();
 
+//curChapters
+var curChap,curSub,curGrade;
 
 
 //document.ready
@@ -20,8 +21,6 @@ $(function(){
   var elem = document.querySelector('.sidenav');
   var instance = M.Sidenav.init(elem);
   
-  
-
   $('.tooltipped').tooltip();
 
   
@@ -32,7 +31,19 @@ $(function(){
   		saveData(dat)
   		refreshDoc();
   		$('.collapsible').collapsible();	
+		  
+
+		  //click event of chapter
+		  $('.chapters>li').click(function(event) {
+		  	$this = $(this);
+		  	remPrevActiveChap();
+		  	$this.addClass('active')
+		  	curChap = $this.data('chapter-id');
+		  	curSub = $this.parent().parent().parent().data('subject-id');
+		  	curGrade = $this.parent().parent().parent().parent().parent().parent().data('grade-id');
+		  });
   });
+
 });
 
 function refreshDoc() {
@@ -51,4 +62,12 @@ function saveData(jsonData) {
 function appendElements(array) {
 	var html = ejs.render(accordianTemplate,array);
 	$gradeListAccordian.append(html);
+}
+
+function remPrevActiveChap(){
+	var str = `.grade[data-grade-id="${curGrade}"] .subject[data-subject-id="${curSub}"] .chapter[data-chapter-id="${curChap}"]`;
+	$prevChap = $(str);
+	if($prevChap.length != 0)
+		$prevChap.removeClass('active')
+	console.log(curGrade);
 }

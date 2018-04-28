@@ -2,39 +2,53 @@ const materializeCss = require('./css/materialize.min.css');
 const commonStyle = require('./sass/app.sass');
 const ejs = require('./js/ejs.js');
 
-var gradeList = [];
+var gradesListObj;
 
+//jquery variables
+$gradeListAccordian = $('#grades-list-accordian');
+$gradesListTemplate = $('#grades-list-template');
+
+//templates here
+//templateFor Accordian
+var accordianTemplate = $gradesListTemplate.html();
+
+
+
+//document.ready
 $(function(){
 	//inits here
   var elem = document.querySelector('.sidenav');
   var instance = M.Sidenav.init(elem);
   
+  
+
   $('.tooltipped').tooltip();
 
+  
   //main functions start here
-  var str = $('#grades-list-template').html();
   $.getJSON('/data.json', function(dat, textStatus) {
-  		var html = ejs.render(str,dat);
-  		$('#grades-list-accordian').append(html);
+  		
+  		gradesListObj = dat;
+  		saveData(dat)
+  		refreshDoc();
   		$('.collapsible').collapsible();	
   });
-  // var html = ejs.render();
-
 });
 
 function refreshDoc() {
 	fetchData();
-	appendElements();
+	appendElements(gradesListObj);
 }
 
-function fetchData(argument) {
-	// body...
+function fetchData() {
+	gradesListObj = JSON.parse(localStorage.getItem('gradesList'));
 }
 
-function saveData(argument) {
-	// body...
+function saveData(jsonData) {
+	localStorage.setItem('gradesList',JSON.stringify(jsonData));
 }
 
-function appendElements(argument) {
-	// body...
+function appendElements(array) {
+	var html = ejs.render(accordianTemplate,array);
+	$gradeListAccordian.append(html);
 }

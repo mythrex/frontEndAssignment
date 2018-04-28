@@ -19,6 +19,7 @@ var pageHeaderTemplate = $pageHeaderTemplate.html();
 //curChapters
 var curChap,curSub,curGrade;
 
+var userName,password;
 
 //document.ready
 $(function(){
@@ -30,7 +31,8 @@ $(function(){
   $('.tabs').tabs();
   refreshDoc();
   //main functions start here
-  
+  $('#btn-login').click(login);
+  $('#btn-sign-up').click(signUp);
 });
 
 function inits() {
@@ -145,4 +147,38 @@ function addQuestion(e) {
 	gradesListObj.gradesList[curGrade].subjectList[curSub].chapterList[curChap].questionList.push({question: inputQuestion,answer: inputAnswer});
 	saveData(gradesListObj);
 	refreshDoc();
+}
+
+function login() {
+	var auth = JSON.parse(localStorage.getItem('auth'));
+	console.log(auth);
+	userName = auth.username;
+	password = auth.password;
+	if(userName ==undefined || password == undefined){
+		M.toast({html: 'Please Sign Up first'})
+	}
+	var inputUserName = $('#login_user_name').val();
+	var inputPassword = $('#login_password').val();
+	if(inputUserName == userName){
+		if(inputPassword == password){
+			$('#section-1').hide('fast', function() {
+				$('#section-2').show('fast',function () {
+					
+				})
+			});
+		}else{
+			M.toast({html: 'Password do not match!'})
+		}
+	}else{
+			M.toast({html: 'in correct username'})
+		}
+}
+
+function signUp() {
+	var inputUserName = $('#sign_up_user_name').val();
+	var inputPassword = $('#sign_up_password').val();
+	userName = inputUserName;
+	password = inputPassword;
+	localStorage.setItem('auth',JSON.stringify({username: userName,password: password}));
+	M.toast({html: 'Saved!'})
 }

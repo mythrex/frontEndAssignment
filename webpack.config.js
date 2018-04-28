@@ -46,12 +46,14 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-      		template: './src/index.html',
-      		filename: 'index.html',
-      		minify: {
-      			collapseWhitespace: true
-      		}
-		}),
+      		template: '!!raw-loader!src/index.ejs',
+					filename: 'index.html', //for me, output file is index.ejs only and not
+					minify: {
+						// removeComments: true,
+						collapseWhitespace: true,
+						// conservativeCollapse: true
+					}
+}),
 		new ExtractTextPlugin({
 			filename: '[hash].css',
 			disable: !isProd,

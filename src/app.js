@@ -9,12 +9,16 @@ $(function(){
   var elem = document.querySelector('.sidenav');
   var instance = M.Sidenav.init(elem);
   
-  $('.collapsible').collapsible();	
   $('.tooltipped').tooltip();
 
   //main functions start here
-  var str = $('#grade-list-accordian').html();
-  console.log(str);
+  var str = $('#grades-list-template').html();
+  $.getJSON('/data.json', function(dat, textStatus) {
+  		var html = ejs.render(str,dat);
+  		$('#grades-list-accordian').append(html);
+  		$('.collapsible').collapsible();	
+  });
+  // var html = ejs.render();
 
 });
 

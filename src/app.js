@@ -23,6 +23,7 @@ var userName,password;
 
 //document.ready
 $(function(){
+	isAuthenticated();
 	//inits here
   var elem = document.querySelector('.sidenav');
   var instance = M.Sidenav.init(elem);
@@ -33,6 +34,9 @@ $(function(){
   //main functions start here
   $('#btn-login').click(login);
   $('#btn-sign-up').click(signUp);
+
+  //for addding question
+  $('#btn-add-question-answer').click(addQuestion)
 });
 
 function inits() {
@@ -52,9 +56,6 @@ function inits() {
 		  $('.btn-chapter').click(addChapter);
 
 	   $('.modal').modal();
-
-	   //for addding question
-	   $('#btn-add-question-answer').click(addQuestion)
 }
 
 function refreshDoc() {
@@ -118,6 +119,7 @@ function addGrade(e) {
 	gradesListObj.gradesList.push({name: value,subjectList: []});
 	saveData(gradesListObj);
 	refreshDoc();
+	M.toast({html: 'Grade Added!'})
 }
 
 function addSubject(e) {
@@ -127,6 +129,7 @@ function addSubject(e) {
 	gradesListObj.gradesList[id].subjectList.push({name: value,chapterList: []});
 	saveData(gradesListObj);
 	refreshDoc();
+	M.toast({html: 'Subject Added!'})
 }
 
 function addChapter(e) {
@@ -139,6 +142,7 @@ function addChapter(e) {
 	gradesListObj.gradesList[gradeId].subjectList[subId].chapterList.push({name: value,questionList: []});
 	saveData(gradesListObj);
 	refreshDoc();
+	M.toast({html: 'Chapter Added!'})
 }
 
 function addQuestion(e) {
@@ -147,6 +151,7 @@ function addQuestion(e) {
 	gradesListObj.gradesList[curGrade].subjectList[curSub].chapterList[curChap].questionList.push({question: inputQuestion,answer: inputAnswer});
 	saveData(gradesListObj);
 	refreshDoc();
+	M.toast({html: 'Question Added!'})
 }
 
 function login() {
@@ -181,4 +186,14 @@ function signUp() {
 	password = inputPassword;
 	localStorage.setItem('auth',JSON.stringify({username: userName,password: password}));
 	M.toast({html: 'Saved!'})
+}
+
+function isAuthenticated() {
+	var auth = JSON.parse(localStorage.getItem('auth'));
+	if (auth) {
+		$('#section-1').hide();
+		$('#section-2').show();
+	}else{
+		$('#section-1').show();
+	}
 }

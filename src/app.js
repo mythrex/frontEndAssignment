@@ -110,7 +110,10 @@ function toggleChapter(event) {
 	//display page Header
 	var pageHeaderHtml = ejs.render(pageHeaderTemplate, {"curGrade": curGrade,"curSub": curSub,"curChap": curChap,"gradesList": gradesListObj.gradesList});
 	$('#page-header-container').html(pageHeaderHtml);
-	$('#btn-question').show();
+	if(curChap != undefined)
+		$('#btn-question').show();
+	else
+		$('#btn-question').hide();
 }
 
 function addGrade(e) {
@@ -136,7 +139,6 @@ function addChapter(e) {
 	var tempArr = $(this).attr('id').split('-');
 	var gradeId = +tempArr[2];
 	var subId = +tempArr[3];
-	console.log(gradeId,subId);
 	var $inputChapter = $('#input-chapter-'+gradeId+'-'+subId);
 	var value = $inputChapter.val();
 	gradesListObj.gradesList[gradeId].subjectList[subId].chapterList.push({name: value,questionList: []});
@@ -157,26 +159,27 @@ function addQuestion(e) {
 function login() {
 	var auth = JSON.parse(localStorage.getItem('auth'));
 	console.log(auth);
-	userName = auth.username;
-	password = auth.password;
-	if(userName ==undefined || password == undefined){
+	if(userName ==undefined || password == undefined || auth==null){
 		M.toast({html: 'Please Sign Up first'})
-	}
-	var inputUserName = $('#login_user_name').val();
-	var inputPassword = $('#login_password').val();
-	if(inputUserName == userName){
-		if(inputPassword == password){
-			$('#section-1').hide('fast', function() {
-				$('#section-2').show('fast',function () {
-					
-				})
-			});
-		}else{
-			M.toast({html: 'Password do not match!'})
-		}
 	}else{
-			M.toast({html: 'in correct username'})
-		}
+		userName = auth.username;
+		password = auth.password;
+		var inputUserName = $('#login_user_name').val();
+		var inputPassword = $('#login_password').val();
+		if(inputUserName == userName){
+			if(inputPassword == password){
+				$('#section-1').hide('fast', function() {
+					$('#section-2').show('fast',function () {
+						
+					})
+				});
+			}else{
+				M.toast({html: 'Password do not match!'})
+			}
+		}else{
+				M.toast({html: 'in correct username'})
+			}
+	}
 }
 
 function signUp() {
@@ -185,7 +188,7 @@ function signUp() {
 	userName = inputUserName;
 	password = inputPassword;
 	localStorage.setItem('auth',JSON.stringify({username: userName,password: password}));
-	M.toast({html: 'Saved!'})
+	M.toast({html: 'Saved! You can now login :)'})
 }
 
 function isAuthenticated() {
